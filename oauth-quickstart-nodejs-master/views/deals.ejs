@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> TEST FORM </title>
+    <style>
+        body
+        {
+            padding:0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #C69B7B;
+        }
+        
+        h1{
+        color:brown;
+        
+        }
+        #show th, #show td{
+        padding: 13px;
+        background-color: #F7E2E2;
+        }
+    </style>
+</head>
+    <body>
+      
+       
+        <div><table border="4" id="show">
+        <br>
+        <thead>
+        <tr>
+        <th>Deal Name</th>
+        <th>Deal Amount</th>
+        <th>Create Date</th>
+        <th>Deal stage</th>
+        <th>Change deal stage</th>
+        
+        </tr>
+        <%  deals.forEach(function(item){ %>
+            <tr>
+                <th><%=item.properties.dealname%></th>
+                <th><%=item.properties.amount%></th>
+                <th><%=item.properties.createdate%></th>
+                <th><%=item.properties.dealstage%></th>
+                <th><form action="/deals" method="post"><select name="dealstage" >
+                    <option value="1">Appointment Scheduled</option>
+                    <option value="2">Qualified to buy</option>
+                    <option value="3">Presentation Scheduled</option>
+                    <option value="4">Decision Maker bought-in</option>
+                    <option value="5">Contract Sent</option>
+                    <option value="6">Closed Won</option>
+                    <option value="7">Closed Lost</option>
+                  </select><button name="id" value="<%=item.id%>"">Submit</button></form>
+                </th>
+                
+                </tr>
+
+            
+          <%  }) %>
+        </thead>
+        </table>
+    </div>
+</body>
+</html>
